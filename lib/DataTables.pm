@@ -525,7 +525,7 @@ Here is an explicit list of all of the options and their defaults:
     columns   => undef,
     user  => undef,
     pass  => undef,
-       db  => undef,
+    db  => undef,
     host  => "localhost",
     port  => "3306",
     patterns  => {},
