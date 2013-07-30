@@ -676,15 +676,11 @@ so I suggest that you just use that.
 
 =over
 
-=item 1
-L<DBI>
+=item 1 L<DBI>
 
-=item 2
-L<JSON::XS>
+=item 2 L<JSON::XS>
 
-=item 3
-
-L<CGI>
+=item 3 L<CGI>
 
 =back
 
