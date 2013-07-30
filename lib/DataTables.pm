@@ -428,11 +428,18 @@ DataTables - a server-side solution for the jQuery DataTables plugin
 
   use DataTables;
   my $dt = DataTables->new(user=>'user',pass=>'pass',db=>'db'); #set inital values to connect to db
-  $dt->tables(["dinosaurs"]);                                    #set table to select from
-  $dt->columns(["height","size","lovability"]);                    #set columns to select in same order as order of columns on page
 
-  $dt->print_json;                                                #print json back to browser
-  my $json = $dt->json;                                         #if you wish to do something with the json yourself
+  #set table to select from
+  $dt->tables(["dinosaurs"]);
+
+  #set columns to select in same order as order of columns on page
+  $dt->columns(["height","size","lovability"]);                  
+
+  #print json back to browser
+  $dt->print_json;                                               
+
+  #if you wish to do something with the json yourself
+  my $json = $dt->json;                                        
 
   # EXAMPLE WITH JOINS
 
@@ -452,16 +459,18 @@ DataTables - a server-side solution for the jQuery DataTables plugin
   my %columns = (
                    0=>{"name"=>"owners"},
                    1=>{"name"=>"pets", AS=>"pet_name"}, # renaming isn't necessary here, unless you wish to use patterns
-                   );
+                );
+
   my %index_cols = ( 
-                          "pets"=>"id",
+                        "pets"=>"id",
                         "owners"=>"id",
-                     );
+                   );
 
   $dt->columns(\%columns);
   $dt->index_cols(\%index_cols); #Not necessary to set index columns
-                                   #since both index columns are id and this is what
-                                   #DataTables defaults to
+                                 #since both index columns are id and this is what
+                                 #DataTables defaults to
+
   $dt->join_clause("owners.id=pets.owner_id");
 
   $dt->print_json;
@@ -469,10 +478,12 @@ DataTables - a server-side solution for the jQuery DataTables plugin
   # Assume in the example above we know that all pets love scooby snacks, and we'd like to represent
   # that in our output. We can do that like so:
   my %patterns = ( 
-                      "pet_name"=>"[% pet_name %] loves scooby snacks!", # notice if we didn't rename pets.name as "pet_name" in the example above
-                                                                       # and we had used name for both owners and pets, both
-                                                                        # columns would receive this pattern
+                      "pet_name"=>"[% pet_name %] loves scooby snacks!", 
                  );
+                 # notice if we didn't rename pets.name as "pet_name" in the example above
+                 # and we had used name for both owners and pets, both
+                 # columns would receive this pattern
+
   $dt->patterns(\%patterns);
 
   $dt->print_json;
