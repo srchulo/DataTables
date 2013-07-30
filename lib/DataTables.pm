@@ -488,7 +488,8 @@ DataTables - a server-side solution for the jQuery DataTables plugin
 
   $dt->print_json;
 
-  # A more realistic example might be putting a '$' before a money value, but personally I find the scooby snacks example more useful
+  # A more realistic example might be putting a '$' before a money value,
+  # but personally I find the scooby snacks example more useful
 
   # NOTE: Any getter/setter method can be set initially when creating the DataTables object can be passed into new()
 
