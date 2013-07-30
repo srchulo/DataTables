@@ -11,7 +11,7 @@ use CGI;
 use DBI;
 use JSON::XS;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 # Preloaded methods go here.
 
