@@ -10,8 +10,14 @@ WriteMakefile(
 							DBI=>1.611,
 							JSON::XS=>2.32,
 							Carp=>0.00,
+							'ExtUtils::MakeMaker' => '6.64',
 						 }, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/DataTables.pm', # retrieve abstract from module
-       AUTHOR         => 'Adam Hopkins <srchulo@cpan.org>') : ()),
+    AUTHOR         => 'Adam Hopkins <srchulo@cpan.org>',
+    LICENSE        => 'perl_5',
+    META_MERGE     => {
+        resources => {
+            repository => 'https://github.com/srchulo/DataTables',
+        },
+    },
+    MIN_PERL_VERSION => 5.008008,
 );
