@@ -23,7 +23,7 @@ sub new {
     my $self = {
         tables  => undef,
         columns   => undef,
-        database_handle => undef,
+        dbh => undef,
         patterns  => {},
         join_clause  => '',
         where_clause  => '',
@@ -76,51 +76,6 @@ sub patterns {
         $self->{patterns} = $h_ref;
     }
     return $self->{patterns};
-}
-
-sub user {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{user} = shift;
-    }
-    return $self->{user};
-}
-
-sub pass {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{pass} = shift;
-    }
-    return $self->{pass};
-}
-
-sub db {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{db} = shift;
-    }
-    return $self->{db};
-}
-
-sub host {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{host} = shift;
-    }
-    return $self->{host};
-}
-
-sub port {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{port} = shift;
-    }
-    return $self->{port};
 }
 
 sub join_clause {
@@ -414,7 +369,7 @@ DataTables - a server-side solution for the jQuery DataTables plugin
   use DBI;
   use DataTables;
   my $dbh = DBI->connect('DBI:mysql:databasename:localhost:3306', 'username', 'password') or die("Could not connect to database: $DBI::errstr");
-  my $dt = DataTables->new(database_handle => $dbh);
+  my $dt = DataTables->new(dbh => $dbh);
 
   #set table to select from
   $dt->tables(["dinosaurs"]);
@@ -522,7 +477,7 @@ Here is an explicit list of all of the options and their defaults:
 
     tables  => undef,
     columns   => undef,
-    database_handle  => undef,
+    dbh  => undef,
     patterns  => {},
     join_clause  => '',
     where_clause  => '',
@@ -602,35 +557,11 @@ The name of the column must be the name that you specified in
 "columns". If you used a hashref in columns and specified the "AS" key,
 then you must use the value for that "AS" key.
 
-=head2 user
+=head2 dbh
 
-    $dt->user("user");
+    $dt->port(DBI->connect(...));
 
-Sets the user for the database.
-
-=head2 pass
-
-    $dt->pass("password");
-
-Sets the password for the database.
-
-=head2 db
-
-    $dt->db("database");
-
-Sets the database to use.
-
-=head2 host
-
-    $dt->host("localhost");
-
-Sets the host to connet to for the database. Defaults to localhost.
-
-=head2 port
-
-    $dt->port("3306");
-
-Sets the port to connect on for the database. Defaults to 3306.
+Sets the database handle that should be used for the server-side requests.
 
 =head2 join_clause
 
