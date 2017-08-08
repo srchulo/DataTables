@@ -6,7 +6,7 @@ WriteMakefile(
     NAME              => 'DataTables',
     VERSION_FROM      => 'lib/DataTables.pm', # finds $VERSION
     PREREQ_PM         => {
-							CGI=>3.60,
+							'CGI::Simple' => '1.113',
 							DBI=>1.611,
 							JSON::XS=>2.32,
 							Carp=>0.00,

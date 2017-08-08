@@ -7,7 +7,7 @@ use warnings;
 use AutoLoader qw(AUTOLOAD);
 
 use Carp;
-use CGI;
+use CGI::Simple;
 use DBI;
 use JSON::XS;
 
@@ -23,11 +23,7 @@ sub new {
     my $self = {
         tables  => undef,
         columns   => undef,
-        user  => undef,
-        pass  => undef,
-        db  => undef,
-        host  => "localhost",
-        port  => "3306",
+        database_handle => undef,
         patterns  => {},
         join_clause  => '',
         where_clause  => '',
@@ -226,21 +222,10 @@ sub json {
     my $self = shift;
 
     # CGI OBJECT
-    my $q = new CGI;
+    my $q = CGI::Simple->new;
 
-    # DB CONFIG VARIABLES
-    my $platform = "mysql";
-    my $database = $self->{db};
-    my $host = $self->{host};
-    my $port = $self->{port};
-    my $user = $self->{user};
-    my $pw = $self->{pass};
-
-    #DATA SOURCE NAME
-    my $dsn = "dbi:mysql:$database:$host:3306";
-
-    # get database handle
-    my $dbh = DBI->connect($dsn, $user, $pw) or croak "couldn't connect to database: $!";
+    # DB HANDLE
+    my $dbh = $self->{dbh};
 
     #columns to use
     my ($aColumns,$regular_columns,$as_hash) = $self->_columns_arr;
@@ -426,8 +411,10 @@ DataTables - a server-side solution for the jQuery DataTables plugin
 
 =head1 SYNOPSIS
 
+  use DBI;
   use DataTables;
-  my $dt = DataTables->new(user=>'user',pass=>'pass',db=>'db'); #set inital values to connect to db
+  my $dbh = DBI->connect('DBI:mysql:databasename:localhost:3306', 'username', 'password') or die("Could not connect to database: $DBI::errstr");
+  my $dt = DataTables->new(database_handle => $dbh);
 
   #set table to select from
   $dt->tables(["dinosaurs"]);
@@ -535,11 +522,7 @@ Here is an explicit list of all of the options and their defaults:
 
     tables  => undef,
     columns   => undef,
-    user  => undef,
-    pass  => undef,
-    db  => undef,
-    host  => "localhost",
-    port  => "3306",
+    database_handle  => undef,
     patterns  => {},
     join_clause  => '',
     where_clause  => '',
@@ -692,7 +675,7 @@ so I suggest that you just use that.
 
 =item 2 L<JSON::XS>
 
-=item 3 L<CGI>
+=item 3 L<CGI::Simple>
 
 =back
 
