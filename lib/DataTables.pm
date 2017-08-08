@@ -7,7 +7,7 @@ use warnings;
 use AutoLoader qw(AUTOLOAD);
 
 use Carp;
-use CGI;
+use CGI::Simple;
 use DBI;
 use JSON::XS;
 
@@ -23,11 +23,7 @@ sub new {
     my $self = {
         tables  => undef,
         columns   => undef,
-        user  => undef,
-        pass  => undef,
-        db  => undef,
-        host  => "localhost",
-        port  => "3306",
+        dbh => undef,
         patterns  => {},
         join_clause  => '',
         where_clause  => '',
@@ -60,6 +56,17 @@ sub columns {
     return $self->{columns};
 }
 
+sub dbh {
+    my $self = shift;
+    
+    if (@_) {
+        my $ref = shift;
+        croak "dbh must be a DBI object" unless UNIVERSAL::can($ref,'prepare');
+        $self->{dbh} = $ref;
+    }
+    return $self->{dbh};
+}
+
 sub index_cols {
     my $self = shift;
     
@@ -80,51 +87,6 @@ sub patterns {
         $self->{patterns} = $h_ref;
     }
     return $self->{patterns};
-}
-
-sub user {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{user} = shift;
-    }
-    return $self->{user};
-}
-
-sub pass {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{pass} = shift;
-    }
-    return $self->{pass};
-}
-
-sub db {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{db} = shift;
-    }
-    return $self->{db};
-}
-
-sub host {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{host} = shift;
-    }
-    return $self->{host};
-}
-
-sub port {
-    my $self = shift;
-    
-    if (@_) {
-        $self->{port} = shift;
-    }
-    return $self->{port};
 }
 
 sub join_clause {
@@ -226,21 +188,11 @@ sub json {
     my $self = shift;
 
     # CGI OBJECT
-    my $q = new CGI;
+    my $q = CGI::Simple->new;
 
-    # DB CONFIG VARIABLES
-    my $platform = "mysql";
-    my $database = $self->{db};
-    my $host = $self->{host};
-    my $port = $self->{port};
-    my $user = $self->{user};
-    my $pw = $self->{pass};
-
-    #DATA SOURCE NAME
-    my $dsn = "dbi:mysql:$database:$host:3306";
-
-    # get database handle
-    my $dbh = DBI->connect($dsn, $user, $pw) or croak "couldn't connect to database: $!";
+    # DB HANDLE
+    my $dbh = $self->{dbh};
+    croak "Database handle not defined" unless defined $dbh;
 
     #columns to use
     my ($aColumns,$regular_columns,$as_hash) = $self->_columns_arr;
@@ -426,8 +378,10 @@ DataTables - a server-side solution for the jQuery DataTables plugin
 
 =head1 SYNOPSIS
 
+  use DBI;
   use DataTables;
-  my $dt = DataTables->new(user=>'user',pass=>'pass',db=>'db'); #set inital values to connect to db
+  my $dbh = DBI->connect('DBI:mysql:databasename:localhost:3306', 'username', 'password') or die("Could not connect to database: $DBI::errstr");
+  my $dt = DataTables->new(dbh => $dbh);
 
   #set table to select from
   $dt->tables(["dinosaurs"]);
@@ -535,11 +489,7 @@ Here is an explicit list of all of the options and their defaults:
 
     tables  => undef,
     columns   => undef,
-    user  => undef,
-    pass  => undef,
-    db  => undef,
-    host  => "localhost",
-    port  => "3306",
+    dbh  => undef,
     patterns  => {},
     join_clause  => '',
     where_clause  => '',
@@ -619,35 +569,11 @@ The name of the column must be the name that you specified in
 "columns". If you used a hashref in columns and specified the "AS" key,
 then you must use the value for that "AS" key.
 
-=head2 user
+=head2 dbh
 
-    $dt->user("user");
+    $dt->dbh(DBI->connect(...));
 
-Sets the user for the database.
-
-=head2 pass
-
-    $dt->pass("password");
-
-Sets the password for the database.
-
-=head2 db
-
-    $dt->db("database");
-
-Sets the database to use.
-
-=head2 host
-
-    $dt->host("localhost");
-
-Sets the host to connet to for the database. Defaults to localhost.
-
-=head2 port
-
-    $dt->port("3306");
-
-Sets the port to connect on for the database. Defaults to 3306.
+Sets the database handle that should be used for the server-side requests.
 
 =head2 join_clause
 
@@ -692,7 +618,7 @@ so I suggest that you just use that.
 
 =item 2 L<JSON::XS>
 
-=item 3 L<CGI>
+=item 3 L<CGI::Simple>
 
 =back
 
