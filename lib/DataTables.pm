@@ -56,6 +56,17 @@ sub columns {
     return $self->{columns};
 }
 
+sub dbh {
+    my $self = shift;
+    
+    if (@_) {
+        my $ref = shift;
+        croak "dbh must be a DBI object" unless UNIVERSAL::can($ref,'prepare');
+        $self->{dbh} = $ref;
+    }
+    return $self->{dbh};
+}
+
 sub index_cols {
     my $self = shift;
     
@@ -181,6 +192,7 @@ sub json {
 
     # DB HANDLE
     my $dbh = $self->{dbh};
+    croak "Database handle not defined" unless defined $dbh;
 
     #columns to use
     my ($aColumns,$regular_columns,$as_hash) = $self->_columns_arr;
@@ -559,7 +571,7 @@ then you must use the value for that "AS" key.
 
 =head2 dbh
 
-    $dt->port(DBI->connect(...));
+    $dt->dbh(DBI->connect(...));
 
 Sets the database handle that should be used for the server-side requests.
 
