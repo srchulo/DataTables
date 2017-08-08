@@ -709,6 +709,8 @@ your web server logs to see what went wrong.
 
 L<DataTables jQuery Plugin|http://datatables.net/>
 
+L<JQuery::DataTables::Request>, a library for handling DataTables request parameters.
+
 =head1 AUTHOR
 
 Adam Hopkins <lt>srchulo@cpan.org<gt>
