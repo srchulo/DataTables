@@ -183,8 +183,7 @@ sub print_json {
     print $json;
 }
 
-sub json {     
-    use strict;
+sub json {
     my $self = shift;
 
     # CGI OBJECT
