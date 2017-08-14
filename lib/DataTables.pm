@@ -4,8 +4,6 @@ use 5.008008;
 use strict;
 use warnings;
 
-use AutoLoader qw(AUTOLOAD);
-
 use Carp;
 use CGI::Simple;
 use DBI;
@@ -14,8 +12,6 @@ use JSON::XS;
 our $VERSION = '0.03';
 
 # Preloaded methods go here.
-
-# Autoload methods go after =cut, and are processed by the autosplit program.
 
 sub new {
     my $invocant = shift;
