@@ -328,12 +328,13 @@ sub json {
     }
 
     # output hash
+	my $sEcho = $q->param('sEcho');
     my %output = (
-                 "sEcho" => $q->param('sEcho'),
+                 "sEcho" => $sEcho,
                  "iTotalRecords" => $iTotal,
-                    "iTotalDisplayRecords" => $iFilteredTotal,
-                 "aaData" => ()
-                   );
+                 "iTotalDisplayRecords" => $iFilteredTotal,
+                 "aaData" => [],
+	);
 
     my $count = 0;
     my $patterns = $self->patterns;
