@@ -331,9 +331,9 @@ sub json {
     my %output = (
                  "sEcho" => $q->param('sEcho'),
                  "iTotalRecords" => $iTotal,
-                    "iTotalDisplayRecords" => $iFilteredTotal,
-                 "aaData" => ()
-                   );
+                 "iTotalDisplayRecords" => $iFilteredTotal,
+                 "aaData" => [],
+	);
 
     my $count = 0;
     my $patterns = $self->patterns;
