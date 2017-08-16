@@ -20,6 +20,7 @@ sub new {
         tables  => undef,
         columns   => undef,
         dbh => undef,
+        query => CGI::Simple->new,
         patterns  => {},
         join_clause  => '',
         where_clause  => '',
@@ -183,7 +184,7 @@ sub json {
     my $self = shift;
 
     # CGI OBJECT
-    my $q = CGI::Simple->new;
+    my $q = $self->{query};
 
     # DB HANDLE
     my $dbh = $self->{dbh};
