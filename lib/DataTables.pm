@@ -251,9 +251,6 @@ sub json {
     return encode_json $output_href;
 } # /json
 
-
-
-
 sub _generate_where_clause {
     my $self = shift;
     my $q = shift;
