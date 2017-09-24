@@ -12,6 +12,9 @@ WriteMakefile(
 							Carp=>0.00,
 							'ExtUtils::MakeMaker' => '6.64',
 						 }, # e.g., Module::Name => 1.1
+    TEST_REQUIRES => {
+        'Data::Compare' => 1.23,
+    },
     AUTHOR         => 'Adam Hopkins <srchulo@cpan.org>',
     LICENSE        => 'perl_5',
     META_MERGE     => {
