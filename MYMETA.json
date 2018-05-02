@@ -4,7 +4,7 @@
       "Adam Hopkins <srchulo@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "unknown"
    ],
@@ -37,6 +37,7 @@
             "DBI" : "1.611",
             "ExtUtils::MakeMaker" : "6.64",
             "JSON::XS" : "2.32",
+            "SQL::Abstract::Limit" : "0",
             "perl" : "5.008008"
          }
       },
@@ -47,5 +48,6 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.02"
+   "version" : "0.02",
+   "x_serialization_backend" : "JSON::PP version 2.27300_01"
 }
