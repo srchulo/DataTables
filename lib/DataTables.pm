@@ -293,17 +293,15 @@ sub _generate_where_clause {
 } # /_generate_where_clause
 
 
-=comment
-
-convert
-\%where = {key => value, -or => \@ }
-to
-\%where = {-and => [{key => value, -or => \@ }, $plus]}
-
-$plus can be a hashref for SQL::Abstract.
-$plus can also be scalarref (deprecated).
-
-=cut
+# 
+# convert
+# \%where = {key => value, -or => \@ }
+# to
+# \%where = {-and => [{key => value, -or => \@ }, $plus]}
+# 
+# $plus can be a hashref for SQL::Abstract.
+# $plus can also be scalarref (deprecated).
+# 
 
 sub _add_where_clause {
     my $self = shift;
