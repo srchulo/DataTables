@@ -1,7 +1,7 @@
 # This Makefile is for the DataTables extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 7.1002 (Revision: 71002) from the contents of
+# 7.0401 (Revision: 70401) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -27,30 +27,30 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /usr/lib/x86_64-linux-gnu/perl/5.24/Config.pm).
+# These definitions are from config.sh (via /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0/darwin-2level/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
-CC = x86_64-linux-gnu-gcc
-CCCDLFLAGS = -fPIC
-CCDLFLAGS = -Wl,-E
-DLEXT = so
+CC = cc
+CCCDLFLAGS =  
+CCDLFLAGS =  
+DLEXT = bundle
 DLSRC = dl_dlopen.xs
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
-LD = x86_64-linux-gnu-gcc
-LDDLFLAGS = -shared -L/usr/local/lib -fstack-protector-strong
+LD = env MACOSX_DEPLOYMENT_TARGET=10.3 cc
+LDDLFLAGS =  -bundle -undefined dynamic_lookup -L/usr/local/lib -fstack-protector-strong
 LDFLAGS =  -fstack-protector-strong -L/usr/local/lib
-LIBC = libc-2.24.so
+LIBC = 
 LIB_EXT = .a
 OBJ_EXT = .o
-OSNAME = linux
-OSVERS = 4.9.0
-RANLIB = :
-SITELIBEXP = /usr/local/share/perl/5.24.1
-SITEARCHEXP = /usr/local/lib/x86_64-linux-gnu/perl/5.24.1
-SO = so
-VENDORARCHEXP = /usr/lib/x86_64-linux-gnu/perl5/5.24
-VENDORLIBEXP = /usr/share/perl5
+OSNAME = darwin
+OSVERS = 16.0.0
+RANLIB = ranlib
+SITELIBEXP = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/site_perl/5.22.0
+SITEARCHEXP = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/site_perl/5.22.0/darwin-2level
+SO = dylib
+VENDORARCHEXP = 
+VENDORLIBEXP = 
 
 
 # --- MakeMaker constants section:
@@ -59,11 +59,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = DataTables
 NAME_SYM = DataTables
-VERSION = 0.05
+VERSION = 0.06
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_05
+VERSION_SYM = 0_06
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.05
+XS_VERSION = 0.06
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -72,62 +72,62 @@ INST_BIN = blib/bin
 INST_LIB = blib/lib
 INST_MAN1DIR = blib/man1
 INST_MAN3DIR = blib/man3
-MAN1EXT = 1p
-MAN3EXT = 3pm
+MAN1EXT = 1
+MAN3EXT = 3
 INSTALLDIRS = site
 DESTDIR = 
 PREFIX = $(SITEPREFIX)
-PERLPREFIX = /usr
-SITEPREFIX = /usr/local
-VENDORPREFIX = /usr
-INSTALLPRIVLIB = /usr/share/perl/5.24
+PERLPREFIX = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0
+SITEPREFIX = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0
+VENDORPREFIX = 
+INSTALLPRIVLIB = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = /usr/local/share/perl/5.24.1
+INSTALLSITELIB = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/site_perl/5.22.0
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
-INSTALLVENDORLIB = /usr/share/perl5
+INSTALLVENDORLIB = 
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = /usr/lib/x86_64-linux-gnu/perl/5.24
+INSTALLARCHLIB = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0/darwin-2level
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = /usr/local/lib/x86_64-linux-gnu/perl/5.24.1
+INSTALLSITEARCH = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/site_perl/5.22.0/darwin-2level
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
-INSTALLVENDORARCH = /usr/lib/x86_64-linux-gnu/perl5/5.24
+INSTALLVENDORARCH = 
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
-INSTALLBIN = /usr/bin
+INSTALLBIN = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/bin
 DESTINSTALLBIN = $(DESTDIR)$(INSTALLBIN)
-INSTALLSITEBIN = /usr/local/bin
+INSTALLSITEBIN = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/bin
 DESTINSTALLSITEBIN = $(DESTDIR)$(INSTALLSITEBIN)
-INSTALLVENDORBIN = /usr/bin
+INSTALLVENDORBIN = 
 DESTINSTALLVENDORBIN = $(DESTDIR)$(INSTALLVENDORBIN)
-INSTALLSCRIPT = /usr/bin
+INSTALLSCRIPT = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/bin
 DESTINSTALLSCRIPT = $(DESTDIR)$(INSTALLSCRIPT)
-INSTALLSITESCRIPT = /usr/local/bin
+INSTALLSITESCRIPT = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/bin
 DESTINSTALLSITESCRIPT = $(DESTDIR)$(INSTALLSITESCRIPT)
-INSTALLVENDORSCRIPT = /usr/bin
+INSTALLVENDORSCRIPT = 
 DESTINSTALLVENDORSCRIPT = $(DESTDIR)$(INSTALLVENDORSCRIPT)
-INSTALLMAN1DIR = /usr/share/man/man1
+INSTALLMAN1DIR = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/man/man1
 DESTINSTALLMAN1DIR = $(DESTDIR)$(INSTALLMAN1DIR)
-INSTALLSITEMAN1DIR = /usr/local/man/man1
+INSTALLSITEMAN1DIR = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/man/man1
 DESTINSTALLSITEMAN1DIR = $(DESTDIR)$(INSTALLSITEMAN1DIR)
-INSTALLVENDORMAN1DIR = /usr/share/man/man1
+INSTALLVENDORMAN1DIR = 
 DESTINSTALLVENDORMAN1DIR = $(DESTDIR)$(INSTALLVENDORMAN1DIR)
-INSTALLMAN3DIR = /usr/share/man/man3
+INSTALLMAN3DIR = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/man/man3
 DESTINSTALLMAN3DIR = $(DESTDIR)$(INSTALLMAN3DIR)
-INSTALLSITEMAN3DIR = /usr/local/man/man3
+INSTALLSITEMAN3DIR = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
-INSTALLVENDORMAN3DIR = /usr/share/man/man3
+INSTALLVENDORMAN3DIR = 
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /usr/share/perl/5.24
-PERL_ARCHLIB = /usr/lib/x86_64-linux-gnu/perl/5.24
-PERL_ARCHLIBDEP = /usr/lib/x86_64-linux-gnu/perl/5.24
+PERL_LIB = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0
+PERL_ARCHLIB = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0/darwin-2level
+PERL_ARCHLIBDEP = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0/darwin-2level
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /usr/lib/x86_64-linux-gnu/perl/5.24/CORE
-PERL_INCDEP = /usr/lib/x86_64-linux-gnu/perl/5.24/CORE
-PERL = "/usr/bin/perl"
-FULLPERL = "/usr/bin/perl"
+PERL_INC = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0/darwin-2level/CORE
+PERL_INCDEP = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0/darwin-2level/CORE
+PERL = "/Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/bin/perl"
+FULLPERL = "/Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/bin/perl"
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -140,9 +140,9 @@ PERM_DIR = 755
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /usr/share/perl/5.24/ExtUtils/MakeMaker.pm
-MM_VERSION  = 7.1002
-MM_REVISION = 71002
+MAKEMAKER   = /Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/lib/5.22.0/ExtUtils/MakeMaker.pm
+MM_VERSION  = 7.0401
+MM_REVISION = 70401
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -195,7 +195,7 @@ PM_TO_BLIB = lib/DataTables.pm \
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 7.1002
+MM_Unix_VERSION = 7.0401
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -246,7 +246,7 @@ makemakerdflt : all
 
 
 # --- MakeMaker dist section:
-TAR = tar
+TAR = COPY_EXTENDED_ATTRIBUTES_DISABLE=1 COPYFILE_DISABLE=1 tar
 TARFLAGS = cvf
 ZIP = zip
 ZIPFLAGS = -r
@@ -261,7 +261,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = DataTables
-DISTVNAME = DataTables-0.05
+DISTVNAME = DataTables-0.06
 
 
 # --- MakeMaker macro section:
@@ -286,7 +286,6 @@ DISTVNAME = DataTables-0.05
 
 PASTHRU = LIBPERL_A="$(LIBPERL_A)"\
 	LINKTYPE="$(LINKTYPE)"\
-	LD="$(LD)"\
 	PREFIX="$(PREFIX)"
 
 
@@ -416,7 +415,7 @@ POD2MAN = $(POD2MAN_EXE)
 
 manifypods : pure_all  \
 	lib/DataTables.pm
-	$(NOECHO) $(POD2MAN) --section=$(MAN3EXT) --perm_rw=$(PERM_RW) -u \
+	$(NOECHO) $(POD2MAN) --section=3 --perm_rw=$(PERM_RW) -u \
 	  lib/DataTables.pm $(INST_MAN3DIR)/DataTables.$(MAN3EXT) 
 
 
@@ -475,7 +474,7 @@ realclean_subdirs :
 # Delete temporary files (via clean) and also delete dist files
 realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
+	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -493,7 +492,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: '\''0'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 7.1002, CPAN::Meta::Converter version 2.150010'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 7.0401, CPAN::Meta::Converter version 2.150001'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'license: perl' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
@@ -513,8 +512,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '  perl: '\''5.008008'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
 	$(NOECHO) $(ECHO) '  repository: https://github.com/srchulo/DataTables' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version: '\''0.05'\''' >> META_new.yml
-	$(NOECHO) $(ECHO) 'x_serialization_backend: '\''CPAN::Meta::YAML version 0.018'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: '\''0.06'\''' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
 	$(NOECHO) $(ECHO) Generating META.json
 	$(NOECHO) $(ECHO) '{' > META_new.json
@@ -523,7 +521,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '      "Adam Hopkins <srchulo@cpan.org>"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
 	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
-	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 7.1002, CPAN::Meta::Converter version 2.150010",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 7.0401, CPAN::Meta::Converter version 2.150001",' >> META_new.json
 	$(NOECHO) $(ECHO) '   "license" : [' >> META_new.json
 	$(NOECHO) $(ECHO) '      "perl_5"' >> META_new.json
 	$(NOECHO) $(ECHO) '   ],' >> META_new.json
@@ -568,8 +566,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '         "url" : "https://github.com/srchulo/DataTables"' >> META_new.json
 	$(NOECHO) $(ECHO) '      }' >> META_new.json
 	$(NOECHO) $(ECHO) '   },' >> META_new.json
-	$(NOECHO) $(ECHO) '   "version" : "0.05",' >> META_new.json
-	$(NOECHO) $(ECHO) '   "x_serialization_backend" : "JSON::PP version 2.27300_01"' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "0.06"' >> META_new.json
 	$(NOECHO) $(ECHO) '}' >> META_new.json
 	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
@@ -657,12 +654,12 @@ disttest : distdir
 
 
 # --- MakeMaker dist_ci section:
+
 ci :
-	$(ABSPERLRUN) -MExtUtils::Manifest=maniread -e '@all = sort keys %{ maniread() };' \
-	  -e 'print(qq{Executing $(CI) @all\n});' \
-	  -e 'system(qq{$(CI) @all}) == 0 or die $$!;' \
-	  -e 'print(qq{Executing $(RCS_LABEL) ...\n});' \
-	  -e 'system(qq{$(RCS_LABEL) @all}) == 0 or die $$!;' --
+	$(PERLRUN) "-MExtUtils::Manifest=maniread" \
+	  -e "@all = keys %{ maniread() };" \
+	  -e "print(qq{Executing $(CI) @all\n}); system(qq{$(CI) @all});" \
+	  -e "print(qq{Executing $(RCS_LABEL) ...\n}); system(qq{$(RCS_LABEL) @all});"
 
 
 # --- MakeMaker distmeta section:
@@ -677,7 +674,7 @@ distmeta : create_distdir metafile
 
 
 # --- MakeMaker distsignature section:
-distsignature : distmeta
+distsignature : create_distdir
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{SIGNATURE} => q{Public-key signature (added by MakeMaker)}}) }' \
 	  -e '    or print "Could not add SIGNATURE to MANIFEST: $$$${'\''@'\''}\n"' --
 	$(NOECHO) cd $(DISTVNAME) && $(TOUCH) SIGNATURE
@@ -712,7 +709,9 @@ doc__install : doc_site_install
 	$(NOECHO) $(ECHO) INSTALLDIRS not defined, defaulting to INSTALLDIRS=site
 
 pure_perl_install :: all
-	$(NOECHO) umask 022; $(MOD_INSTALL) \
+	$(NOECHO) $(MOD_INSTALL) \
+		read "$(PERL_ARCHLIB)/auto/$(FULLEXT)/.packlist" \
+		write "$(DESTINSTALLARCHLIB)/auto/$(FULLEXT)/.packlist" \
 		"$(INST_LIB)" "$(DESTINSTALLPRIVLIB)" \
 		"$(INST_ARCHLIB)" "$(DESTINSTALLARCHLIB)" \
 		"$(INST_BIN)" "$(DESTINSTALLBIN)" \
@@ -724,7 +723,7 @@ pure_perl_install :: all
 
 
 pure_site_install :: all
-	$(NOECHO) umask 02; $(MOD_INSTALL) \
+	$(NOECHO) $(MOD_INSTALL) \
 		read "$(SITEARCHEXP)/auto/$(FULLEXT)/.packlist" \
 		write "$(DESTINSTALLSITEARCH)/auto/$(FULLEXT)/.packlist" \
 		"$(INST_LIB)" "$(DESTINSTALLSITELIB)" \
@@ -737,7 +736,9 @@ pure_site_install :: all
 		"$(PERL_ARCHLIB)/auto/$(FULLEXT)"
 
 pure_vendor_install :: all
-	$(NOECHO) umask 022; $(MOD_INSTALL) \
+	$(NOECHO) $(MOD_INSTALL) \
+		read "$(VENDORARCHEXP)/auto/$(FULLEXT)/.packlist" \
+		write "$(DESTINSTALLVENDORARCH)/auto/$(FULLEXT)/.packlist" \
 		"$(INST_LIB)" "$(DESTINSTALLVENDORLIB)" \
 		"$(INST_ARCHLIB)" "$(DESTINSTALLVENDORARCH)" \
 		"$(INST_BIN)" "$(DESTINSTALLVENDORBIN)" \
@@ -747,30 +748,50 @@ pure_vendor_install :: all
 
 
 doc_perl_install :: all
+	$(NOECHO) $(ECHO) Appending installation info to "$(DESTINSTALLARCHLIB)/perllocal.pod"
+	-$(NOECHO) $(MKPATH) "$(DESTINSTALLARCHLIB)"
+	-$(NOECHO) $(DOC_INSTALL) \
+		"Module" "$(NAME)" \
+		"installed into" $(INSTALLPRIVLIB) \
+		LINKTYPE "$(LINKTYPE)" \
+		VERSION "$(VERSION)" \
+		EXE_FILES "$(EXE_FILES)" \
+		>> "$(DESTINSTALLARCHLIB)/perllocal.pod"
 
 doc_site_install :: all
-	$(NOECHO) $(ECHO) Appending installation info to "$(DESTINSTALLSITEARCH)/perllocal.pod"
-	-$(NOECHO) umask 02; $(MKPATH) "$(DESTINSTALLSITEARCH)"
-	-$(NOECHO) umask 02; $(DOC_INSTALL) \
+	$(NOECHO) $(ECHO) Appending installation info to "$(DESTINSTALLARCHLIB)/perllocal.pod"
+	-$(NOECHO) $(MKPATH) "$(DESTINSTALLARCHLIB)"
+	-$(NOECHO) $(DOC_INSTALL) \
 		"Module" "$(NAME)" \
 		"installed into" $(INSTALLSITELIB) \
 		LINKTYPE "$(LINKTYPE)" \
 		VERSION "$(VERSION)" \
 		EXE_FILES "$(EXE_FILES)" \
-		>> "$(DESTINSTALLSITEARCH)/perllocal.pod"
+		>> "$(DESTINSTALLARCHLIB)/perllocal.pod"
 
 doc_vendor_install :: all
+	$(NOECHO) $(ECHO) Appending installation info to "$(DESTINSTALLARCHLIB)/perllocal.pod"
+	-$(NOECHO) $(MKPATH) "$(DESTINSTALLARCHLIB)"
+	-$(NOECHO) $(DOC_INSTALL) \
+		"Module" "$(NAME)" \
+		"installed into" $(INSTALLVENDORLIB) \
+		LINKTYPE "$(LINKTYPE)" \
+		VERSION "$(VERSION)" \
+		EXE_FILES "$(EXE_FILES)" \
+		>> "$(DESTINSTALLARCHLIB)/perllocal.pod"
 
 
 uninstall :: uninstall_from_$(INSTALLDIRS)dirs
 	$(NOECHO) $(NOOP)
 
 uninstall_from_perldirs ::
+	$(NOECHO) $(UNINSTALL) "$(PERL_ARCHLIB)/auto/$(FULLEXT)/.packlist"
 
 uninstall_from_sitedirs ::
 	$(NOECHO) $(UNINSTALL) "$(SITEARCHEXP)/auto/$(FULLEXT)/.packlist"
 
 uninstall_from_vendordirs ::
+	$(NOECHO) $(UNINSTALL) "$(VENDORARCHEXP)/auto/$(FULLEXT)/.packlist"
 
 
 # --- MakeMaker force section:
@@ -802,7 +823,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = "/usr/bin/perl"
+FULLPERL      = "/Users/srchulo/perl5/perlbrew/perls/perl-5.22.0/bin/perl"
 
 $(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) $(USEMAKEFILE) $(MAKE_APERL_FILE) $@
@@ -832,10 +853,10 @@ subdirs-test ::
 
 
 test_dynamic :: pure_all
-	PERL_DL_NONLAZY=1 PERL_USE_UNSAFE_INC=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
+	PERL_DL_NONLAZY=1 $(FULLPERLRUN) "-MExtUtils::Command::MM" "-MTest::Harness" "-e" "undef *Test::Harness::Switches; test_harness($(TEST_VERBOSE), '$(INST_LIB)', '$(INST_ARCHLIB)')" $(TEST_FILES)
 
 testdb_dynamic :: pure_all
-	PERL_DL_NONLAZY=1 PERL_USE_UNSAFE_INC=1 $(FULLPERLRUN) $(TESTDB_SW) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
+	PERL_DL_NONLAZY=1 $(FULLPERLRUN) $(TESTDB_SW) "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
 
 test_ : test_dynamic
 
@@ -857,7 +878,7 @@ ppd :
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="ExtUtils::MakeMaker" VERSION="6.64" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="JSON::XS" VERSION="2.32" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="SQL::Abstract::Limit" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.24" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-2level-5.22" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd
