@@ -1,5 +1,5 @@
-use Test::More tests => 2;
-BEGIN { use_ok('DataTables') };
+use Test::More tests => 1;
+use DataTables;
 use CGI::Simple;
 use DBI;
 use Data::Compare qw/Compare/;
@@ -42,6 +42,7 @@ my @tests = (
             bSearchable_1 => 'true',
             bSearchable_2 => 'true',
             sEcho => 7,
+            
         },
     }
 );
@@ -79,3 +80,5 @@ sub run_test {
     ok( Compare($data, $expected), 'data fetched via DataTables looks like expected' );
     
 } # /run_test
+
+done_testing;
