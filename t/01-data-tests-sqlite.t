@@ -1,9 +1,14 @@
-use Test::More tests => 1;
+use Test::More;
 use DataTables;
 use CGI::Simple;
 use DBI;
 use Data::Compare qw/Compare/;
 use FindBin qw/$Bin/;
+
+eval "use DBD::SQLite";
+plan skip_all => "DBD::SQLite required for this test script." if $@;
+
+plan tests => 1;
 
 my @tests = (
     {
@@ -42,7 +47,6 @@ my @tests = (
             bSearchable_1 => 'true',
             bSearchable_2 => 'true',
             sEcho => 7,
-            
         },
     }
 );
@@ -80,5 +84,3 @@ sub run_test {
     ok( Compare($data, $expected), 'data fetched via DataTables looks like expected' );
     
 } # /run_test
-
-done_testing;
