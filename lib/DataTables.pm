@@ -202,7 +202,7 @@ sub table_data {
     my $where_href = $self->_generate_where_clause($dt_req);
     
     #ordering
-    my @order = $self->_generate_order_clause($q);
+    my @order = $self->_generate_order_clause($dt_req);
 
     #paging
     my $limit = $q->param('iDisplayLength') || 10;
@@ -390,24 +390,24 @@ sub _add_where_clause {
 
 sub _generate_order_clause {
     my $self = shift;
-    my $q = shift;
+    my $dt_req = shift;
     
     my ($aColumns,undef,undef) = $self->_columns_arr;
     
     my @order = ();
-    if($q->param('iSortCol_0')) {
+    
+    foreach my $order_instruction ( @{$dt_req->orders()} ) {
         
-        for(my $i = 0; $i < $q->param('iSortingCols'); $i++) {
-            my $sortable_column_nr = $q->param('iSortCol_'.$i);
-            my $sortable_flag = 'bSortable_' . $sortable_column_nr;
-            if($q->param($sortable_flag) eq "true") {
-                my $sort_col = $aColumns->[$sortable_column_nr];
-                my $sort_dir = '-' . $q->param('sSortDir_' . $i);
-                
-                push @order, {$sort_dir => $sort_col};
-            }
-        }
-
+        # build direction, must be '-asc' or '-desc' (cf. SQL::Abstract)
+        # we only get 'asc' or 'desc', so they have to be prefixed with '-'
+        my $sortable_column_nr = $order_instruction->{column};
+        my $direction =  '-' . $order_instruction->{dir};
+        
+        # We only get the column index (starting from 0), so we have to
+        # translate the index into a column name.
+        my $column_name = $aColumns->[$sortable_column_nr];
+        push @order, { $direction => $column_name };
+        
     }
     
     return @order;
