@@ -199,7 +199,7 @@ sub table_data {
     croak "Tables must be provided for the FROM clause" unless $self->tables;
 
     #filtering
-    my $where_href = $self->_generate_where_clause($q, $dt_req);
+    my $where_href = $self->_generate_where_clause($dt_req);
     
     #ordering
     my @order = $self->_generate_order_clause($q);
@@ -304,7 +304,6 @@ sub _create_datatables_request {
 
 sub _generate_where_clause {
     my $self = shift;
-    my $q = shift;
     my $dt_req = shift;
     
     my ($aColumns,undef,undef) = $self->_columns_arr;
