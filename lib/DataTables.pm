@@ -488,7 +488,7 @@ DataTables - a server-side solution for the jQuery DataTables plugin
 =head1 DESCRIPTION
 
 This module is an easy way to integrate server-side with the jQuery L<DataTables|http://datatables.net/> plugin. 
-Currently this module is designed to work with legacy DataTables 1.9 and lower. 
+Currently this module is designed to work with legacy DataTables 1.9 and lower, and with DataTables 1.10. 
 It supports basic features like displaying columns
 from a single table, but also supports more advanced features such as:
 
