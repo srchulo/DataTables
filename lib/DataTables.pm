@@ -324,7 +324,7 @@ sub _generate_where_clause {
     
     my $where_href = {};
     
-    if( $dt_req->search ) {
+    if( $dt_req->search && defined $dt_req->search->{value} ) {
         my $search_string = $dt_req->search->{value}; # the global search value
         
         # XXX: maybe use $dt_req->columns()?
