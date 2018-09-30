@@ -177,13 +177,8 @@ sub print_json {
 
 sub table_data {
     my $self = shift;
-
-    # CGI OBJECT
-    my $q = $self->{query};
-
-    # TODO: available from Perl 5.20.0: get multiple key-value pairs in 1 request, e.g. my %new_hash = %hash{qw/a b/};
-    # XXX: encapsulate to make testing easier (re-use the encapsulated method in tests instead of custom code)
-    my %all_query_parameters = $q->Vars;
+    
+    my %all_query_parameters = $self->_get_query_parameters();
     
     # may croak if client_params isn't recognized as containing DataTables parameters
     my $dt_req = $self->_create_datatables_request( \%all_query_parameters );
@@ -205,8 +200,8 @@ sub table_data {
     my @order = $self->_generate_order_clause($dt_req);
 
     #paging
-    my $limit = $q->param('iDisplayLength') || 10;
-    my $offset = $q->param('iDisplayStart') || 0;
+    my $limit = $dt_req->length || 10;
+    my $offset = $dt_req->start || 0;
 
     #join
     if($self->join_clause ne '') {
@@ -243,13 +238,32 @@ sub table_data {
     my $iTotal = $aResultTotal[0];
 
     # output hash
-    my $sEcho = $q->param('sEcho');
-    my %output = (
-        "sEcho" => $sEcho,
-        "iTotalRecords" => $iTotal,
-        "iTotalDisplayRecords" => $iFilteredTotal,
-        "aaData" => [],
-    );
+    my %output = ();
+    my $sEcho = $dt_req->draw;
+    my $version = $dt_req->version( \%all_query_parameters );
+    
+    
+    if( $version eq '1.10' ) {
+        # new interface
+        
+        %output = (
+            "draw" => int($sEcho),
+            "recordsTotal" => int($iTotal),
+            "recordsFiltered" => int($iFilteredTotal),
+            "aaData" => [],
+        );
+        
+    }else{
+        # old interface
+        
+        %output = (
+            "sEcho" => int($sEcho),
+            "iTotalRecords" => int($iTotal),
+            "iTotalDisplayRecords" => int($iFilteredTotal),
+            "aaData" => [],
+        );
+        
+    }
 
     my $count = 0;
     my $patterns = $self->patterns;
@@ -310,7 +324,7 @@ sub _generate_where_clause {
     
     my $where_href = {};
     
-    if( $dt_req->search ) {
+    if( $dt_req->search && defined $dt_req->search->{value} ) {
         my $search_string = $dt_req->search->{value}; # the global search value
         
         # XXX: maybe use $dt_req->columns()?
@@ -414,7 +428,23 @@ sub _generate_order_clause {
 } # /_generate_order_clause
 
 
-1;
+
+
+sub _get_query_parameters {
+    my $self = shift;
+
+    # CGI OBJECT
+    my $q = $self->{query};
+
+    # TODO: available from Perl 5.20.0: get multiple key-value pairs in 1 request, e.g. my %new_hash = %hash{qw/a b/};
+    # XXX: encapsulate to make testing easier (re-use the encapsulated method in tests instead of custom code)
+    my %all_query_parameters = $q->Vars;
+    
+    return %all_query_parameters;
+} # /_get_query_parameters
+
+1; # /DataTables
+
 __END__
 
 =head1 NAME
