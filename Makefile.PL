@@ -12,6 +12,7 @@ WriteMakefile(
 							Carp=>0.00,
 							'ExtUtils::MakeMaker' => '6.64',
                             'JQuery::DataTables::Request' => '0.109',
+							'SQL::Abstract::Limit' => '0.13',
 						 }, # e.g., Module::Name => 1.1
     TEST_REQUIRES => {
         'Data::Compare' => 1.23,
