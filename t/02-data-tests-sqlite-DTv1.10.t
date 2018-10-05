@@ -22,7 +22,7 @@ my @tests = (
             "recordsFiltered" => 50,
             "draw" => 1,
             "recordsTotal" => 50,
-            "aaData" => [
+            "data" => [
                 ["Gecko","Firefox 1.0","Win 98+ / OSX.2+","1.7","A"],
                 ["Gecko","Firefox 1.5","Win 98+ / OSX.2+","1.8","A"],
                 ["Gecko","Firefox 2.0","Win 98+ / OSX.2+","1.8","A"],
@@ -82,7 +82,7 @@ my @tests = (
             "recordsFiltered" => 2,
             "draw" => 1,
             "recordsTotal" => 50,
-            "aaData" => [
+            "data" => [
                 ["Gecko","Camino 1.0","OSX.2+","1.8","A"],
                 ["Gecko","Camino 1.5","OSX.3+","1.8","A"],
             ]
@@ -134,7 +134,7 @@ my @tests = (
             "recordsFiltered" => 2,
             "draw" => 1,
             "recordsTotal" => 50,
-            "aaData" => [
+            "data" => [
                 ["Gecko","Camino 1.5","OSX.3+","1.8","A"],
                 ["Gecko","Camino 1.0","OSX.2+","1.8","A"],
             ]
@@ -186,7 +186,7 @@ my @tests = (
             "recordsFiltered" => 7,
             "draw" => 1,
             "recordsTotal" => 50,
-            "aaData" => [
+            "data" => [
                 ["Misc","NetFront 3.4","Embedded devices","-","A"],
                 ["Misc","IE Mobile","Windows Mobile 6","-","C"],
                 ["Misc","PSP browser","PSP","-","C"],
@@ -269,7 +269,7 @@ sub run_test {
     
     #if you wish to do something with the json yourself
     my $data = $dt->table_data;
-    
+
     ok( Compare($data, $expected), 'data fetched via DataTables looks like expected' );
     
 } # /run_test
