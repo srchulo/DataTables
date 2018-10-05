@@ -286,10 +286,6 @@ sub table_data {
         $count++;
     }
 
-    unless($count) {
-        $output{'aaData'} = ''; #we don't want to have 'null'. will break js
-    }
-
     return \%output;
 } # /table_data
 
