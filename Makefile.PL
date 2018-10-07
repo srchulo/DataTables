@@ -11,11 +11,13 @@ WriteMakefile(
 							JSON::XS=>2.32,
 							Carp=>0.00,
 							'ExtUtils::MakeMaker' => '6.64',
-                            'JQuery::DataTables::Request' => '0.109',
+							'JQuery::DataTables::Request' => '0.109',
 							'SQL::Abstract::Limit' => '0.13',
 						 }, # e.g., Module::Name => 1.1
     TEST_REQUIRES => {
         'Data::Compare' => 1.23,
+		'Test::More' => 0,
+		'DBD::SQLite' => 0,
     },
     AUTHOR         => 'Adam Hopkins <srchulo@cpan.org>',
     LICENSE        => 'perl_5',
