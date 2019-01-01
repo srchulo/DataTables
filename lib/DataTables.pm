@@ -11,7 +11,7 @@ use JSON::XS;
 use SQL::Abstract::Limit;
 use JQuery::DataTables::Request;
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 # Preloaded methods go here.
 
