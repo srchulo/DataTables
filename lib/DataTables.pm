@@ -653,7 +653,7 @@ This can be an array of values, or a key-value-hash as a JSON object.
     # or:
     my $dt1 = DataTables->new(dbh => $dbh, data_output_format => 'column');
 
-The C<data_output_format> parameter defines wheter to output an array or a hash.
+The C<data_output_format> parameter defines whether to output an array or a hash.
 
 The default is C<column-id> and returns:
 
@@ -666,7 +666,7 @@ The default is C<column-id> and returns:
         "recordsFiltered":57
     }
 
-If you (optionally) define the C<column> parameter for your DataTable and use the output format C<column-id>, then it has to have the column indices as names:
+If you (optionally) define the C<column> parameter for your DataTable and use the output format C<column-id>, then it must have the column indices as names:
 
     columns: [
         { data: "0" },
@@ -749,7 +749,7 @@ does.
 
 I recommend using this method to display the information
 back to the browser once you've set up the DataTables object.
-It not only prints the json out, but also takes care of printing
+It not only prints the JSON out, but also takes care of printing
 the content-type header back to the browser.
 
 =head2 json
@@ -758,9 +758,8 @@ the content-type header back to the browser.
     print "Content-type: application/json\n\n";
     print $json;
 
-The json() method returns the json to you that the jQuery DataTables plugin
-is expecting. What I wrote above is essentially what the print_json() method does,
-so I suggest that you just use that.
+The json() method returns the JSON that the jQuery DataTables plugin is expecting.
+The sample code above is essentially what the C<print_json()> method does.
 
 =head1 REQUIRES
 
