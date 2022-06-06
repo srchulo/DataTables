@@ -647,6 +647,12 @@ then you must use the value for that "AS" key.
 The L<DataTables/json> method returns an array of data source objects, one for each row, which will be used by DataTables.
 This can be an array of values, or a key-value-hash as a JSON object.
 
+    # default:
+    my $dt1 = DataTables->new(dbh => $dbh, data_output_format => 'column-id');
+    
+    # or:
+    my $dt1 = DataTables->new(dbh => $dbh, data_output_format => 'column');
+
 The C<data_output_format> parameter defines wheter to output an array or a hash.
 
 The default is C<column-id> and returns:
