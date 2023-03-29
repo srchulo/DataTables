@@ -1,8 +1,6 @@
 DataTables
 ==========
 
-[![Build Status](https://travis-ci.org/srchulo/DataTables.svg?branch=master)](https://travis-ci.org/srchulo/DataTables)
-
 A Perl server-side solution for the jQuery DataTables plugin (https://datatables.net/). 
 This module is an easy way to integrate server-side with the jQuery DataTables plugin.
 
